@@ -10,7 +10,7 @@ Player::Player(Game & game, const string & name, const string & job){
     this->game->addPlayer(this);
     this->wage = 0;
     this->last_action = "";
-    this->lastKilledPlayer = nullptr;
+    // this->lastKilledPlayer = nullptr;
 }
 
 int Player::coins(){
