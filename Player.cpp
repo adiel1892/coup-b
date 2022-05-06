@@ -34,9 +34,16 @@ void Player::foreign_aid(){
     this->last_action = "foreign aid";
 
 }
-void Player::coup(Player other){
+void Player::coup(Player &other){
     if(!this->game->rightTurn(*this)){
         throw invalid_argument("it is not this player turn");
+    }
+    if(this->job == "Assassin"){
+        if(this->wage >= 3){
+            this->wage -= 3;
+            this->game->updateTurn();
+            this->last_action = "coup";
+        }
     }
 
     if(this->wage >= 7){

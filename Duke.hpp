@@ -4,7 +4,7 @@ namespace coup{
     class Duke : public Player{
         public:
         Duke(Game &game , const string & name);
-        void block(Player player);
+        void block(Player &player);
         void tax();
     };
 }

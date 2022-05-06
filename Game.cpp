@@ -52,3 +52,11 @@ bool Game::rightTurn(Player &player){
 void Game::revivePlayer(Player *player){
     this->currPlayers->insert(this->currPlayers->begin()+ (player->pos -1),player);
 }
+
+void Game::killPlayer(Player &player){
+    for(unsigned int i = 0; i < this->currPlayers->size(); i++){
+        if(this->currPlayers->at(i) == &player){
+            this->currPlayers->erase(this->currPlayers->begin()+ i , this->currPlayers->begin() + i + 1);
+        }
+    }
+}

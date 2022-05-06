@@ -18,6 +18,7 @@ namespace coup{
             void addPlayer(Player *player);
             void revivePlayer(Player *player);
             bool rightTurn(Player &player);
+            void killPlayer(Player &player);
             void updateTurn();
     };
 }

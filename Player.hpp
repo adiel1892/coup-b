@@ -20,7 +20,7 @@ namespace coup{
             string role();
             void income();
             void foreign_aid();
-            void coup(Player player);
+            void coup(Player &player);
 
     };
 }

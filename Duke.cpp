@@ -4,7 +4,7 @@ Duke::Duke(Game &game , const string &name) : Player(game,name,"Duke"){
     
 }
 
-void Duke::block(Player player){
+void Duke::block(Player &player){
     if(player.last_action == "foreign aid"){
         player.wage -= 2;
         this->last_action = "block";
