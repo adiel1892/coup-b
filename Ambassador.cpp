@@ -11,6 +11,8 @@ void Ambassador::block(Player &player){
             player.wage -= 2;
             this->wage += 2; 
         }
+    }else{
+        throw invalid_argument("Ambassador can block only Captain");
     }
 
 }

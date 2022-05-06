@@ -24,8 +24,10 @@ vector<string> Game::players(){
 }
 
 string Game::winner(){
-
-    return "coup-a";
+    if(this->currPlayers->size() != 1){
+        throw invalid_argument("There is only one winner");
+    }
+    return this->currPlayers->at(0)->name;
 }
 
 void Game::addPlayer(Player *player){
@@ -57,6 +59,7 @@ void Game::killPlayer(Player &player){
     for(unsigned int i = 0; i < this->currPlayers->size(); i++){
         if(this->currPlayers->at(i) == &player){
             this->currPlayers->erase(this->currPlayers->begin()+ i , this->currPlayers->begin() + i + 1);
+            break;
         }
     }
 }

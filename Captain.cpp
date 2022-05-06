@@ -10,6 +10,8 @@ void Captain::block(Player &player){
             player.wage -= 2;
             this->wage += 2; 
         }
+    }else{
+        throw invalid_argument("Captain can block only Captain");
     }
 }
 
