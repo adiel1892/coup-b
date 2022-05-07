@@ -22,5 +22,7 @@ namespace coup{
             bool rightTurn(Player &player);
             void killPlayer(Player &player);
             void updateTurn();
+            void validNumPlayers();
+
     };
 }

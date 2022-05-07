@@ -16,6 +16,7 @@ namespace coup{
             string last_action;
             int wage;
             int pos;
+            bool alive;
             int coins();
             string role();
             void income();

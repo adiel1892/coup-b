@@ -15,10 +15,16 @@ void Duke::block(Player &player){
 }
 
 void Duke::tax(){
+    this->game->validNumPlayers();
     if(!game->rightTurn(*this)){
         throw invalid_argument("it is not this player turn");
     }
+    if(this->wage >= 10){
+        throw invalid_argument("Player has more than 10 coins. must coup");
+    }
     this->wage += 3;
-    game->updateTurn();
+    this->last_action = "tax";
+    this->game->updateTurn();
+
     
 }

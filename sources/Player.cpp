@@ -10,6 +10,7 @@ Player::Player(Game & game, const string & name, const string & job){
     this->game->addPlayer(this);
     this->wage = 0;
     this->last_action = "";
+    this->alive = true;
     // this->lastKilledPlayer = nullptr;
 }
 
@@ -20,16 +21,24 @@ string Player::role(){
     return this->job;
 }
 void Player::income(){
+    this->game->validNumPlayers();
     if(!this->game->rightTurn(*this)){
         throw invalid_argument("it is not this player turn");
+    }
+    if(this->wage >= 10){
+        throw invalid_argument("Player has more than 10 coins. must coup");
     }
     this->wage++;
     this->game->updateTurn();
     this->last_action = "income";
 }
 void Player::foreign_aid(){
+    this->game->validNumPlayers();
     if(!this->game->rightTurn(*this)){
         throw invalid_argument("it is not this player turn");
+    }
+    if(this->wage >= 10){
+        throw invalid_argument("Player has more than 10 coins. must coup");
     }
     this->wage += 2;
     this->game->updateTurn();
@@ -38,15 +47,21 @@ void Player::foreign_aid(){
 }
 
 void Player::coup(Player &player){
+    this->game->validNumPlayers();
     if(!this->game->rightTurn(*this)){
         throw invalid_argument("it is not this player turn");
+    }
+    if(player.alive == false){
+        throw invalid_argument("Player already dead");
     }
     if(this->job == "Assassin"){
         if(this->wage >= 3){
             this->wage -= 3;
             this->last_action = "coup";
-            this->game->updateTurn();
             this->game->killPlayer(player);
+            this->game->updateTurn();
+        }else{
+            throw invalid_argument("The Assassin must have 3 coins for doing this activity");
         }
     }else if(this->wage >= 7){
         this->wage -= 7;
