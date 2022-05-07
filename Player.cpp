@@ -36,6 +36,7 @@ void Player::foreign_aid(){
     this->last_action = "foreign aid";
 
 }
+
 void Player::coup(Player &player){
     if(!this->game->rightTurn(*this)){
         throw invalid_argument("it is not this player turn");
@@ -43,15 +44,8 @@ void Player::coup(Player &player){
     if(this->job == "Assassin"){
         if(this->wage >= 3){
             this->wage -= 3;
-            this->game->updateTurn();
             this->last_action = "coup";
-            this->lastKilledPlayer = &player;
-            cout << this->lastKilledPlayer->name << this->lastKilledPlayer->name << endl;
-            for (unsigned int i = 0; i < this->game->currPlayers->size() ; i++) {
-            if(this->game->currPlayers->at(i) == &player){
-                this->lastKilledIndex = i;
-            }
-        }
+            this->game->updateTurn();
             this->game->killPlayer(player);
         }
     }else if(this->wage >= 7){

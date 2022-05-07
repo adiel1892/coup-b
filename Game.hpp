@@ -12,11 +12,13 @@ namespace coup{
             Game();
             ~Game();
             unsigned int currTurn;
+            unsigned int lastKillI;
+            Player *lastKilledPlay;
             string turn();
             vector<string> players();
             string winner();
             void addPlayer(Player *player);
-            void revivePlayer(Player *player , unsigned int pos);
+            void revivePlayer(Player *player);
             bool rightTurn(Player &player);
             void killPlayer(Player &player);
             void updateTurn();

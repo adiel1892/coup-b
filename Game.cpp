@@ -50,17 +50,15 @@ bool Game::rightTurn(Player &player){
     return this->currPlayers->at(this->currTurn) == &player;
 }
 
-void Game::revivePlayer(Player *player , unsigned int pos){
-    cout << pos << endl;
-    cout << player->name << player->name << endl;
-    this->currPlayers->insert(this->currPlayers->begin() + pos,player);
+void Game::revivePlayer(Player *player){
+    this->currPlayers->insert(this->currPlayers->begin() + this->lastKillI,player);
 }
 
 void Game::killPlayer(Player &player){
-    cout << "killing now " << player.name << endl;
-    
+    this->lastKilledPlay = &player;
     for(unsigned int i = 0; i < this->currPlayers->size(); i++){
         if(this->currPlayers->at(i) == &player){
+            this->lastKillI = i;
             this->currPlayers->erase(this->currPlayers->begin()+ i , this->currPlayers->begin() + i + 1);
             break;
         }
