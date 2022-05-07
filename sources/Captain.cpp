@@ -30,6 +30,7 @@ void Captain::steal(Player &player){
         player.wage -= 1;
         this->wage += 1;
     }
+    player.stolen = "stolen";
     this->last_action = "steal";
     this->game->updateTurn();
 }

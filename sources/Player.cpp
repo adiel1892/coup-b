@@ -10,8 +10,9 @@ Player::Player(Game & game, const string & name, const string & job){
     this->game->addPlayer(this);
     this->wage = 0;
     this->last_action = "";
+    this->stolen = "";
     this->alive = true;
-    // this->lastKilledPlayer = nullptr;
+    this->assassinUsed = false;
 }
 
 int Player::coins(){
@@ -31,6 +32,7 @@ void Player::income(){
     this->wage++;
     this->game->updateTurn();
     this->last_action = "income";
+    this->game->started = true;
 }
 void Player::foreign_aid(){
     this->game->validNumPlayers();
@@ -55,11 +57,18 @@ void Player::coup(Player &player){
         throw invalid_argument("Player already dead");
     }
     if(this->job == "Assassin"){
-        if(this->wage >= 3){
+        if(this->wage >= 3 && this->wage <= 6){
             this->wage -= 3;
             this->last_action = "coup";
+            this->assassinUsed = true;
             this->game->killPlayer(player);
             this->game->updateTurn();
+        }else if(this->wage >= 7){
+            this->wage -= 7;
+            this->assassinUsed = false;
+            this->game->killPlayer(player);
+            this->game->updateTurn();
+            this->last_action = "coup";
         }else{
             throw invalid_argument("The Assassin must have 3 coins for doing this activity");
         }
@@ -69,6 +78,7 @@ void Player::coup(Player &player){
         this->game->updateTurn();
         this->last_action = "coup";
     }else{
+        cout << this->wage << this->name << this->job << this->pos << endl;
         throw invalid_argument("The player must have 7 coins for doing this activity");
     }
 }

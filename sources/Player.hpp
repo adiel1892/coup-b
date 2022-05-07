@@ -17,6 +17,8 @@ namespace coup{
             int wage;
             int pos;
             bool alive;
+            bool assassinUsed;
+            string stolen;
             int coins();
             string role();
             void income();

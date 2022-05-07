@@ -23,6 +23,7 @@ namespace coup{
             void killPlayer(Player &player);
             void updateTurn();
             void validNumPlayers();
+            bool started;
 
     };
 }

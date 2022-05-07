@@ -9,7 +9,18 @@ void Ambassador::block(Player &player){
     if(player.job == "Captain" && player.last_action == "steal"){
         if(player.wage >= 2){
             player.wage -= 2;
-            this->wage += 2; 
+            for(unsigned int i = 0; i < this->game->currPlayers->size(); i++){
+                if(this->game->currPlayers->at(i)->stolen == "stolen" && this->game->currPlayers->at(i)->alive){
+                    this->game->currPlayers->at(i)->wage += 2;
+                }
+            }
+        }else if(player.wage == 1){
+            player.wage -= 1;
+            for(unsigned int i = 0; i < this->game->currPlayers->size(); i++){
+                if(this->game->currPlayers->at(i)->stolen == "stolen" && this->game->currPlayers->at(i)->alive){
+                    this->game->currPlayers->at(i)->wage += 1;
+                }
+            }
         }
     }else{
         throw invalid_argument("Ambassador can block only Captain");
