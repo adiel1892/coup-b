@@ -47,15 +47,18 @@ void Game::updateTurn(){
 }
 
 bool Game::rightTurn(Player &player){
-    cout << player.name << " " << this->currTurn << endl;
     return this->currPlayers->at(this->currTurn) == &player;
 }
 
-void Game::revivePlayer(Player *player){
-    this->currPlayers->insert(this->currPlayers->begin()+ (player->pos -1),player);
+void Game::revivePlayer(Player *player , unsigned int pos){
+    cout << pos << endl;
+    cout << player->name << player->name << endl;
+    this->currPlayers->insert(this->currPlayers->begin() + pos,player);
 }
 
 void Game::killPlayer(Player &player){
+    cout << "killing now " << player.name << endl;
+    
     for(unsigned int i = 0; i < this->currPlayers->size(); i++){
         if(this->currPlayers->at(i) == &player){
             this->currPlayers->erase(this->currPlayers->begin()+ i , this->currPlayers->begin() + i + 1);

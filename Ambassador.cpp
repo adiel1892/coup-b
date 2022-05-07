@@ -20,6 +20,7 @@ void Ambassador::transfer(Player &from , Player &to){
     if(from.wage >= 1){
         from.wage -= 1;
         to.wage += 1;
+        this->game->updateTurn();
     }else{
         throw invalid_argument("There are not enough coins to take from");
     }

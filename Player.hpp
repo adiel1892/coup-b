@@ -17,6 +17,7 @@ namespace coup{
             int wage;
             int pos;
             Player *lastKilledPlayer;
+            unsigned int lastKilledIndex;
             int coins();
             string role();
             void income();

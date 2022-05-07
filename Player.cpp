@@ -46,10 +46,17 @@ void Player::coup(Player &player){
             this->game->updateTurn();
             this->last_action = "coup";
             this->lastKilledPlayer = &player;
+            cout << this->lastKilledPlayer->name << this->lastKilledPlayer->name << endl;
+            for (unsigned int i = 0; i < this->game->currPlayers->size() ; i++) {
+            if(this->game->currPlayers->at(i) == &player){
+                this->lastKilledIndex = i;
+            }
+        }
             this->game->killPlayer(player);
         }
     }else if(this->wage >= 7){
         this->wage -= 7;
+        this->game->killPlayer(player);
         this->game->updateTurn();
         this->last_action = "coup";
     }else{

@@ -16,7 +16,7 @@ namespace coup{
             vector<string> players();
             string winner();
             void addPlayer(Player *player);
-            void revivePlayer(Player *player);
+            void revivePlayer(Player *player , unsigned int pos);
             bool rightTurn(Player &player);
             void killPlayer(Player &player);
             void updateTurn();

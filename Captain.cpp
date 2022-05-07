@@ -5,14 +5,14 @@ Captain::Captain(Game &game , const string &name) : Player(game,name,"Captain"){
 
 }
 void Captain::block(Player &player){
-    // if(player.job == "Captain" && player.last_action == "steal"){
-    //     if(player.wage >= 2){
-    //         player.wage -= 2;
-    //         this->wage += 2; 
-    //     }
-    // }else{
-    //     throw invalid_argument("Captain can block only Captain");
-    // }
+    if(player.job == "Captain" && player.last_action == "steal"){
+        if(player.wage >= 2){
+            player.wage -= 2;
+            this->wage += 2; 
+        }
+    }else{
+        throw invalid_argument("Captain can block only Captain");
+    }
 }
 
 void Captain::steal(Player &player){
@@ -23,5 +23,6 @@ void Captain::steal(Player &player){
         player.wage -= 2;
         this->wage += 2;
         this->last_action = "steal";
+        this->game->updateTurn();
     }
 }
