@@ -1,6 +1,7 @@
 #include "Ambassador.hpp"
 using namespace coup;
 
+
 Ambassador::Ambassador(Game &game , string const &name) : Player(game,name,"Ambassador"){
 
 
@@ -32,7 +33,7 @@ void Ambassador::transfer(Player &from , Player &to){
     if(!game->rightTurn(*this)){
         throw invalid_argument("it is not this player turn");
     }
-    if(this->wage >= 10){
+    if(this->wage >= mustCoup){
         throw invalid_argument("Player has more than 10 coins. must coup");
     }
     if(from.wage >= 1){

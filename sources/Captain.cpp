@@ -20,7 +20,7 @@ void Captain::steal(Player &player){
     if(!game->rightTurn(*this)){
         throw invalid_argument("it is not this player turn");
     }
-    if(this->wage >= 10){
+    if(this->wage >= mustCoup){
         throw invalid_argument("Player has more than 10 coins. must coup");
     }
     if(player.wage >= 2){
