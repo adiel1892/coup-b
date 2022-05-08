@@ -1,5 +1,4 @@
 #include "Game.hpp"
-#include <iostream>
 using namespace coup;
 using namespace std;
 constexpr int minPlayers = 2;

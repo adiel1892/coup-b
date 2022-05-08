@@ -1,5 +1,4 @@
 #include "Player.hpp"
-#include "Assassin.hpp"
 using namespace coup;
 using namespace std;
 constexpr int useAssassin = 3;

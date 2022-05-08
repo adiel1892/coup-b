@@ -1,8 +1,5 @@
 #pragma once
 #include "Game.hpp"
-#include <string>
-#include <vector>
-#include <iostream>
 using namespace std;
 constexpr int mustCoup = 10;
 namespace coup{
