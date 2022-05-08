@@ -9,7 +9,12 @@ namespace coup{
     class Game;
     class Player{
         public:
-            Player(Game & game, const string &name, const string & job);
+            Player(Game & game, const string &name, const string & job){
+                this->name = name;
+                this->job = job;
+                this->game = &game;
+                this->addPlayer();
+            }
             Game *game;
             string job;
             string name;
@@ -23,6 +28,7 @@ namespace coup{
             void income();
             void foreign_aid();
             void coup(Player &player);
+            void addPlayer();
 
     };
 }

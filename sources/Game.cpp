@@ -4,10 +4,6 @@ using namespace coup;
 using namespace std;
 constexpr int minPlayers = 2;
 
-
-// Game::Game(){
-//     this->currPlayers = new vector<Player*>[maxPlayers];   
-// }
 Game::~Game(){
     delete[] this->currPlayers;
 }
@@ -38,16 +34,6 @@ string Game::winner()const{
     return this->players().at(0);
 }
 
-void Game::addPlayer(Player *player)const{
-    if(this->currPlayers->size() >= maxPlayers){
-        throw invalid_argument("Maximun 6 players");
-    }
-    if(this->started){
-        throw invalid_argument("game already started");
-    }
-    this->currPlayers->push_back(player);
-}
-
 void Game::updateTurn(){
     while(true){
         this->currTurn++;
@@ -56,7 +42,6 @@ void Game::updateTurn(){
         }
     }
 }
-
 
 bool Game::rightTurn(Player &player)const{
     if(!player.alive){

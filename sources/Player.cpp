@@ -5,13 +5,16 @@ using namespace std;
 constexpr int useAssassin = 3;
 constexpr int notUseAssassin = 7;
 constexpr int inRangeOfAssassin = 6;
+constexpr int maxPlayersInGame = 6;
 
-
-Player::Player(Game & game, const string & name, const string & job){
-    this->name = name;
-    this->job = job;
-    this->game = &game;
-    this->game->addPlayer(this);
+void Player::addPlayer(){
+    if(this->game->currPlayers->size() >= maxPlayersInGame){
+        throw invalid_argument("Maximun 6 players");
+    }
+    if(this->game->started){
+        throw invalid_argument("game already started");
+    }
+    this->game->currPlayers->push_back(this);
 }
 
 int Player::coins()const{

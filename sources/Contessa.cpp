@@ -9,7 +9,7 @@ void Contessa::block(Player &player){
         if(this->game->lastKilledPlayer == nullptr){
             throw invalid_argument("There is not a dead player");
         }
-        this->game->revivePlayer(this->game->lastKilledPlayer);
+        coup::Game::revivePlayer(this->game->lastKilledPlayer);
         this->game->lastKilledPlayer = nullptr;
         this->assassinUsed = false;
 

@@ -9,23 +9,21 @@ namespace coup{
     class Player;
     class Game{
         public:
-            vector<Player*>* currPlayers;
             Game(){
                 this->currPlayers = new vector<Player*>[maxPlayers];   
             }
             ~Game();
+            vector<Player*>* currPlayers;
             unsigned int currTurn = 0;
             Player *lastKilledPlayer;
             string turn()const;
             vector<string> players()const;
             string winner()const;
-            void addPlayer(Player *player)const;
-            void revivePlayer(Player *player);
+            static void revivePlayer(Player *player);
             bool rightTurn(Player &player)const;
             void killPlayer(Player &player);
             void updateTurn();
             void validNumPlayers()const;
             bool started = false;
-
     };
 }
