@@ -1,5 +1,6 @@
 #pragma once
 #include "Game.hpp"
+#include <stdexcept>
 using namespace std;
 constexpr int mustCoup = 10;
 namespace coup{
